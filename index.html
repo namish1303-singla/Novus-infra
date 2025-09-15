@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Vatika City - Novus Infra</title>
+  <style>
+    * { box-sizing: border-box; font-family: Arial, sans-serif; margin: 0; padding: 0; }
+    body { background: #f9fafb; color: #111; line-height: 1.5; }
+    nav, footer { background: #fff; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+    nav .logo, footer .logo { font-weight: bold; font-size: 1.25rem; margin-bottom: 0.5rem; }
+    nav ul, footer ul { list-style: none; display: flex; flex-wrap: wrap; gap: 1rem; padding-left: 0; }
+    nav ul li a, footer ul li a { text-decoration: none; color: #111; font-weight: 600; }
+    nav .actions { display: flex; gap: 1rem; }
+    .btn { padding: 0.6rem 1.5rem; border-radius: 6px; border: none; cursor: pointer; font-weight: 600; }
+    .btn-primary { background: #3182f6; color: white; }
+    .btn-secondary { background: transparent; border: 1px solid #3182f6; color: #3182f6; }
+    .hero {
+      background: url('8.WEBP') center/cover no-repeat;
+      padding: 6rem 2rem;
+      color: white;
+      text-align: left;
+      max-width: 1200px;
+      margin: 0 auto;
+      border-radius: 10px;
+      position: relative;
+    }
+    .hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .highlight { color: #90cdf4; }
+    section { max-width: 1200px; margin: 4rem auto; padding: 0 2rem; }
+    h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .intro-p { margin-bottom: 2rem; }
+    .horizontal-cards, .amenities, .floor-plans, .commercial-list, .business-advantages, .core-values, .team-list, .contact-info, .footer-sections {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+    }
+    .card, .amenity, .value-box, .team-member, .commercial-item {
+      background: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);
+      max-width: 340px;
+      text-align: left;
+      flex: 1 1 280px;
+      position: relative;
+    }
+    .card img, .commercial-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+    .badge, .status {
+      position: absolute;
+      top: 1rem;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.75rem;
+      color: white;
+    }
+    .badge { left: 1rem; background-color: #48bb78; }
+    .status { right: 1rem; background-color: rgba(0,0,0,0.6); }
+    .features span {
+      background: #ebf4ff;
+      color: #3182f6;
+      font-size: 0.8rem;
+      margin: 0 0.25rem 0.5rem 0;
+      padding: 0.2rem 0.6rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+    ul.info-list {
+      list-style: none;
+      padding-left: 1rem;
+      margin-bottom: 1rem;
+    }
+    ul.info-list li {
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+    .floor-plan {
+      background: #f7fafc;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: center;
+      flex-basis: 200px;
+    }
+    .floor-plan h3 { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+    .floor-plan p, .floor-plan strong { margin: 0.2rem 0; }
+    .amenity, .value-box {
+      font-size: 0.9rem;
+      min-width: 210px;
+      text-align: center;
+    }
+    .amenity strong, .value-box strong {
+      display: block;
+      margin-bottom: 0.3rem;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    .team-member {
+      text-align: center;
+      max-width: 220px;
+    }
+    .team-member img {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      margin-bottom: 0.5rem;
+      border: 3px solid #3182f6;
+    }
+    .contact-info {
+      flex-direction: column;
+      max-width: 600px;
+      margin: 0 auto 3rem auto;
+      gap: 0.75rem;
+    }
+    .contact-info div {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    form { max-width: 600px; margin: 0 auto; padding: 1rem; background: #fff; border-radius: 10px; box-shadow: 0 2px 10px rgb(0 0 0 / 0.1);}
+    form h3 { margin-bottom: 1rem; }
+    label { display: block; margin: 0.75rem 0 0.25rem 0; font-weight: 600; }
+    input[type="text"], input[type="email"], input[type="tel"], input[type="date"], select, textarea {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 6px;
+      border: 1px solid #cbd5e0;
+      font-size: 1rem;
+    }
+    button[type="submit"] {
+      margin-top: 1rem;
+      background: #3182f6;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.2rem;
+      font-weight: bold;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    footer {
+      color: white;
+      background: #1a202c;
+      padding: 2rem;
+      justify-content: space-between;
+    }
+    footer div {
+      max-width: 300px;
+    }
+    footer p, footer a {
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+    footer a {
+      color: white;
+      margin-right: 0.5rem;
+      font-weight: bold;
+    }
+    @media(max-width: 768px) {
+      nav, footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul, footer ul {
+        flex-direction: column;
+      }
+      nav .actions {
+        margin-top: 1rem;
+        width: 100%;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+    <img src="lo.png" alt="Logo" width="300" height="80">
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#residential">Residential</a></li>
+    <li><a href="#commercial">Commercial</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="actions">
+    <button class="btn btn-primary">Call Now</button>
+    <button class="btn btn-primary">Book Site Visit</button>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <h1>Welcome to <span class="highlight">Vatika City</span></h1>
+  <p>Experience premium living in Patran, Patiala with our exclusive residential and commercial projects. Modern amenities, strategic location, and world-class infrastructure.</p>
+  <button class="btn btn-primary">Explore Projects</button>
+  <button class="btn btn-secondary">Contact Us</button>
+</section>
+
+<section id="projects">
+  <h2>Our Premium Projects</h2>
+  <p class="intro-p">Discover exceptional living and business opportunities at Vatika City, Patran. Thoughtfully designed spaces that blend comfort, luxury, and convenience.</p>
+  <div class="horizontal-cards">
+    <div class="card">
+      <span class="badge">Residential</span>
+      <span class="status">Plotting</span>
+      <img src="h.WEBP" alt="Residential Project" />
+      <h3>Vatika City Residential</h3>
+      <ul class="info-list">
+        <li>Starting Price: ₹45 Lakh onwards</li>
+        <li>Area: 1200-2500 sq ft</li>
+        <li>Configuration: 2-4 BHK</li>
+        <li>Location: Patran, Patiala</li>
+      </ul>
+      <div class="features">
+        <span>Swimming Pool</span><span>Gym</span><span>Kids Play Area</span><span>24/7 Security</span>
+      </div>
+      <button class="btn btn-primary">View Details</button>
+      <button class="btn btn-secondary">Book Visit</button>
+    </div>
+    <div class="card">
+      <span class="badge" style="background:#3182f6;">Commercial</span>
+      <span class="status">Under Construction</span>
+      <img src="sh.JPG" alt="Commercial Project" />
+      <h3>Vatika City Commercial</h3>
+      <ul class="info-list">
+        <li>Starting Price: ₹85 Lakh onwards</li>
+        <li>Area: 500-1500 sq ft</li>
+        <li>Configuration: Retail & Office</li>
+        <li>Location: Patran, Patiala</li>
+      </ul>
+      <div class="features">
+        <span>Prime Location</span><span>High Footfall</span><span>Parking</span><span>Modern Amenities</span>
+      </div>
+      <button class="btn btn-primary">View Details</button>
+      <button class="btn btn-secondary">Book Visit</button>
+    </div>
+  </div>
+</section>
+
+<section id="residential">
+  <h2>Residential Living at Vatika City</h2>
+  <p class="intro-p">Experience luxury living with modern amenities, spacious homes, and a vibrant community in the heart of Patran, Patiala.</p>
+  <div class="floor-plans">
+    <div class="floor-plan">
+     <img src="h.WEBP" width="200" length="150">
+      <h3>2 BHK</h3>
+      <p>1200 sq ft</p>
+      <p><strong>Bedrooms:</strong> 2</p>
+      <p><strong>Bathrooms:</strong> 2</p>
+      <p><strong>₹45 Lakh</strong></p>
+      <button class="btn btn-secondary">View Details</button>
+    </div>
+    <div class="floor-plan">
+      <div style="font-size: 2rem;">🏠</div>
+      <h3>3 BHK</h3>
+      <p>1650 sq ft</p>
+      <p><strong>Bedrooms:</strong> 3</p>
+      <p><strong>Bathrooms:</strong> 2</p>
+      <p><strong>₹62 Lakh</strong></p>
+      <button class="btn btn-secondary">View Details</button>
+    </div>
+    <div class="floor-plan">
+      <div style="font-size: 2rem;">🏠</div>
+      <h3>4 BHK</h3>
+      <p>2500 sq ft</p>
+      <p><strong>Bedrooms:</strong> 4</p>
+      <p><strong>Bathrooms:</strong> 3</p>
+      <p><strong>₹85 Lakh</strong></p>
+      <button class="btn btn-secondary">View Details</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>World-Class Amenities</h2>
+  <div class="amenities">
+    <div class="amenity"><strong>Swimming Pool</strong><p>Olympic size swimming pool with kids section</p></div>
+    <div class="amenity"><strong>Modern Gym</strong><p>Fully equipped fitness center with latest equipment</p></div>
+    <div class="amenity"><strong>Kids Play Area</strong><p>Safe and fun playground for children</p></div>
+    <div class="amenity"><strong>24/7 Security</strong><p>Round the clock security with CCTV surveillance</p></div>
+    <div class="amenity"><strong>Covered Parking</strong><p>Dedicated parking spaces for all residents</p></div>
+    <div class="amenity"><strong>Landscaped Gardens</strong><p>Beautiful green spaces and walking paths</p></div>
+    <div class="amenity"><strong>Shopping Complex</strong><p>On-site retail stores and daily needs shops</p></div>
+    <div class="amenity"><strong>Healthcare Center</strong><p>Medical facility with emergency services</p></div>
+  </div>
+</section>
+
+<section id="commercial">
+  <h2>Commercial & Residential Opportunities at Vatika City</h2>
+  <p class="intro-p">Establish your business in a thriving commercial ecosystem. Premium retail and office spaces designed for success in Patran's fastest-growing commercial district.</p>
+  <div class="commercial-list">
+    <div class="commercial-item">
+      <img src="h.WEBP" alt="Retail Shops" />
+      <h3>Residential Plots</h3>
+      <ul class="info-list">
+        <li>500 - 800 sq ft</li>
+        <li>₹85 Lakh onwards</li>
+      </ul>
+      <div class="features">
+        <span>Prime Location</span><span>High Footfall</span><span>Modern Infrastructure</span><span>Parking Available</span>
+      </div>
+     
+      <button class="btn btn-primary">Learn More</button>
+    </div>
+    <div class="commercial-item">
+      <img src="sh.JPG" alt="sh.JPEG" />
+      <h3>Showrooms</h3>
+      <ul class="info-list">
+        <li>1000 - 2000 sq ft</li>
+        <li>₹1.8 Crore onwards</li>
+      </ul>
+      <div class="features">
+        <span>Large Display Windows</span><span>Premium Location</span><span>Wide Frontage</span><span>Storage Space</span>
+      </div>
+      <button class="btn btn-primary">Learn More</button>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Why Choose Vatika City for Business?</h2>
+  <p class="intro-p">Vatika City offers the perfect environment for businesses to thrive. With strategic location, modern infrastructure, and a growing customer base, it's the ideal destination for your commercial venture in Patran, Patiala.</p>
+  <div class="business-advantages">
+    <div class="value-box"><strong>Strategic Location</strong><p>Located in the growing commercial hub of Patran with excellent connectivity</p></div>
+    <div class="value-box"><strong>Easy Accessibility</strong><p>Well-connected to major highways and transportation networks</p></div>
+    <div class="value-box"><strong>Target Audience</strong><p>High-density residential area ensuring consistent customer flow</p></div>
+    <div class="value-box"><strong>Modern Infrastructure</strong><p>State-of-the-art facilities with contemporary design and amenities</p></div>
+    <div class="value-box"><strong>Ample Parking</strong><p>Dedicated parking spaces for customers and staff convenience</p></div>
+    <div class="value-box"><strong>Digital Ready</strong><p>High-speed internet and modern IT infrastructure</p></div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About Novus Infra</h2>
+  <p class="intro-p">Building dreams into reality with innovative design, quality construction, and unwavering commitment to excellence in Patran, Patiala.</p>
+  <div style="max-width: 600px; margin: 0 auto 2rem auto;">
+    <img src="" alt="About Novus Infra" style="width: 100%; border-radius: 10px;" />
+  </div>
+  <h3>Our Story</h3>
+  <p>Founded with a vision to transform the real estate landscape in Punjab, Novus Infra has been at the forefront of creating exceptional living and working spaces. Our journey began with a simple belief: every family deserves a home that reflects their dreams and aspirations.</p>
+  <p>Today, we are proud to present Vatika City – our flagship project in Patran, Patiala, where modern design meets traditional values, creating a harmonious community for families and businesses to flourish.</p>
+
+  <div class="core-values">
+    <div class="value-box"><strong>Quality Excellence</strong><p>We maintain the highest standards in construction quality and material selection.</p></div>
+    <div class="value-box"><strong>Timely Delivery</strong><p>Our projects are completed on schedule with meticulous planning and execution.</p></div>
+    <div class="value-box"><strong>Customer First</strong><p>Your satisfaction is our priority. We provide exceptional service throughout your journey.</p></div>
+    <div class="value-box"><strong>Sustainable Development</strong><p>We incorporate eco-friendly practices and green technologies in our projects.</p></div>
+  </div>
+
+  <h2>Meet Our Leadership Team</h2>
+  <div class="team-list">
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Rajesh Kumar" />
+      <strong>Rajesh Kumar</strong>
+      <p>Founder & CEO</p>
+      <small>15+ years in real estate</small>
+    </div>
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Priya Sharma" />
+      <strong>Priya Sharma</strong>
+      <p>Head of Design</p>
+      <small>12+ years in architecture</small>
+    </div>
+    <div class="team-member">
+      <img src="https://randomuser.me/api/portraits/men/46.jpg" alt="Amit Singh" />
+      <strong>Amit Singh</strong>
+      <p>Project Manager</p>
+      <small>10+ years in construction</small>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Get in Touch</h2>
+  <div class="contact-info">
+    <div><strong>Address:</strong> Vatika City, Patran, Patiala, Punjab</div>
+    <div><strong>Phone:</strong> +91 98765 43210</div>
+    <div><strong>Email:</strong> info@novusinfra.com</div>
+    <div><strong>Office Hours:</strong> Mon - Sat: 9:00 AM – 6:00 PM</div>
+  </div>
+
+  <form>
+    <h3>Send us a Message</h3>
+    <label for="name">Full Name*</label>
+    <input id="name" type="text" placeholder="Enter your full name" required />
+    <label for="email">Email*</label>
+    <input id="email" type="email" placeholder="Enter your email" required />
+    <label for="phone">Phone Number*</label>
+    <input id="phone" type="tel" placeholder="Enter your phone number" required />
+    <label for="interest">Interested In</label>
+    <select id="interest">
+      <option>Residential</option>
+      <option>Commercial</option>
+    </select>
+    <label for="message">Message</label>
+    <textarea id="message" placeholder="Tell us about your requirements..." rows="4" maxlength="500"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <form style="margin-top: 3rem;">
+    <h3>Book Site Visit</h3>
+    <label for="visit-name">Full Name*</label>
+    <input id="visit-name" type="text" placeholder="Enter your full name" required />
+    <label for="visit-email">Email*</label>
+    <input id="visit-email" type="email" placeholder="Enter your email" required />
+    <label for="visit-phone">Phone Number*</label>
+    <input id="visit-phone" type="tel" placeholder="Enter your phone number" required />
+    <label for="visit-date">Preferred Date*</label>
+    <input id="visit-date" type="date" required />
+    <label for="visit-time">Preferred Time*</label>
+    <select id="visit-time" required>
+      <option value="">Select time</option>
+      <option>09:00 AM</option>
+      <option>10:00 AM</option>
+      <option>11:00 AM</option>
+      <option>12:00 PM</option>
+      <option>01:00 PM</option>
+      <option>02:00 PM</option>
+      <option>03:00 PM</option>
+      <option>04:00 PM</option>
+      <option>05:00 PM</option>
+      <option>06:00 PM</option>
+    </select>
+    <label for="project-type">Project Type</label>
+    <select id="project-type">
+      <option>Residential</option>
+      <option>Commercial</option>
+    </select>
+    <label for="additional-notes">Additional Notes</label>
+    <textarea id="additional-notes" placeholder="Any specific requirements..." rows="3" maxlength="500"></textarea>
+    <button type="submit">Book Site Visit</button>
+  </form>
+</section>
+
+<footer>
+  <div>
+    <div class="l.jpeg">Novus Infra</div>
+    <p>Building dreams into reality with premium residential and commercial projects in Patran, Patiala. Experience luxury living at Vatika City with world-class amenities and modern infrastructure.</p>
+    <div>
+      <a href="#">Fb</a><a href="#">Tw</a><a href="#">Ig</a><a href="#">Li</a>
+    </div>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#residential">Residential</a></li>
+      <li><a href="#commercial">Commercial</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+  <div>
+    <h4>Contact Info</h4>
+    <p>Vatika City, Patran</p>
+    <p>Patiala, Punjab</p>
+    <p>+91 98553 96330
+       +91 82888 45330 </p>
+    <p>info.novusinfra@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>
