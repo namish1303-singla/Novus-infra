@@ -258,7 +258,7 @@
       <button class="btn btn-secondary">View Details</button>
     </div>
     <div class="floor-plan">
-      <div style="font-size: 2rem;">🏠</div>
+<img src="h.WEBP" width="200" length="150">
       <h3>3 BHK</h3>
       <p>1650 sq ft</p>
       <p><strong>Bedrooms:</strong> 3</p>
@@ -267,7 +267,7 @@
       <button class="btn btn-secondary">View Details</button>
     </div>
     <div class="floor-plan">
-      <div style="font-size: 2rem;">🏠</div>
+ <img src="h.WEBP" width="200" length="150">
       <h3>4 BHK</h3>
       <p>2500 sq ft</p>
       <p><strong>Bedrooms:</strong> 4</p>
@@ -386,7 +386,7 @@
     <div><strong>Office Hours:</strong> Mon - Sat: 9:00 AM – 6:00 PM</div>
   </div>
 
-  <form>
+<form style="margin-top: 3rem;">
     <h3>Send us a Message</h3>
     <label for="name">Full Name*</label>
     <input id="name" type="text" placeholder="Enter your full name" required />
@@ -404,7 +404,8 @@
     <button type="submit">Send Message</button>
   </form>
 
-  <form style="margin-top: 3rem;">
+  
+  <form method="post" action="https://script.google.com/macros/s/AKfycbwyGBlKzkRExboa43adGBZwP6fghZvHRsMsP_XRmALxhyVRVnBaM-qCWBq9PWygxoW6/exec" name="contact-form">
     <h3>Book Site Visit</h3>
     <label for="visit-name">Full Name*</label>
     <input id="visit-name" type="text" placeholder="Enter your full name" required />
@@ -437,6 +438,8 @@
     <textarea id="additional-notes" placeholder="Any specific requirements..." rows="3" maxlength="500"></textarea>
     <button type="submit">Book Site Visit</button>
   </form>
+<script src="Google Sheets.js"></script>
+
 </section>
 
 <footer>
@@ -466,7 +469,39 @@
        +91 82888 45330 </p>
     <p>info.novusinfra@gmail.com</p>
   </div>
+  <style>
+    #map {
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
 </footer>
+<div id="map"></div>
 
+<script>
+  function initMap() {
+    var location = { lat: 29.9708611, lng: 76.0598889 }; // Patran exact location
+
+    var map = new google.maps.Map(document.getElementById("map"), {
+      center: location,
+      zoom: 14,
+      gestureHandling: "cooperative" // 👈 requires 2 fingers to move on mobile
+    });
+
+    new google.maps.Marker({
+      position: location,
+      map: map,
+      title: "Vatika City, Patran"
+    });
+  }
+</script>
+
+<!-- ✅ Correct Google Maps API script -->
+<script async
+  src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+</script>
 </body>
 </html>
+
+ 
